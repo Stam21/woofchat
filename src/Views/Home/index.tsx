@@ -22,9 +22,8 @@ function Home() {
             'Content-Type': 'application/json; charset=UTF-8',
         },
     })
-        .then((res) => res.json())
         .then((res) => {
-          if (res.authToken === "okay") {
+          if (res.status === 200) {
             setAuth(true);
           }
         })
@@ -49,7 +48,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // Authenticated layout
         <div>
           <h1>Welcome to the Authenticated App!</h1>
-          <button>Logout</button>
+          <button onClick={() => setAuth(false)}>Logout</button>
         </div>
       ) : (
       <form style={{marginLeft:'35%',marginRight:'35%',marginTop:'15%'}} onSubmit={handleLogin}>
